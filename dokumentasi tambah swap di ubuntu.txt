@@ -1,0 +1,29 @@
+
+
+1- command jika ram server anda adalah 512 dan anda ingin membuat Swap 1GB
+$ dd if=/dev/zero of=/swap.file bs=1024 count=1024k
+
+2- buat file swap
+$ mkswap /swap.file
+
+3- aktifkan
+$ swapon /swap.file
+
+4- memberikan permission
+$ chmod 0600 /swap.file
+
+5- Besaran angka 10 di sini adalah level tingkat penggunaan Swap oleh server. 
+Semakin besar -maks 100- maka server akan makin rajin menggunakan Swap
+$ sysctl vm.swappiness=10
+
+
+6- edit file
+$ nano /etc/fstab
+
+7- Finished! Sekarang Swap sudah aktif dan anda bisa cek ulang dengan command
+$ swapon -s
+atau
+$ free -m
+
+
+
